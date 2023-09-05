@@ -8,7 +8,18 @@
     <script
       src="https://kit.fontawesome.com/c8e4d183c2.js"
       crossorigin="anonymous"></script>
+      <script src="index.js"></script>
+      <script type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+      </script>
+      <script type="text/javascript">
+         (function(){
+            emailjs.init("_GJ-qWmG6pzGjnnZN");
+         })();
+      </script>
   </head>
+
+
   <body>
     <section id="landing-page">
       <nav>
@@ -30,7 +41,7 @@
               >Projects</a
             >
           </li>
-          <li class="nav__link">
+          <li class="nav__link" onclick="toggleModal()">
             <a
               href="#"
               class="nav__link--anchor link__hover-effect link__hover-effect--black"
@@ -56,7 +67,7 @@
             style to your project through responsive and visually striking web
             applications.
             <br />
-            Here's a little bit more <b class="orange">about me</b>.
+            Here's a little bit more <b class="orange click" onclick="toggleModal()">about me</b>.
           </p>
           <div class="social__list">
             <a
@@ -80,12 +91,92 @@
           </div>
         </div>
       </header>
-      <button class="mail__button click">
+      <button class="mail__button click" onclick="toggleModal()">
         <i class="fas fa-envelope"></i>
       </button>
       <a href="#projects" class="scroll">
         <div class="scroll__icon click"></div>
       </a>
+      <div class="modal">
+        <div class="modal__half modal__about">
+          <h3 class="modal__title modal__title--about">
+            Here's a bit about me!
+          </h3>
+          <h4 class="modal__sub-title modal__sub-title--about">
+            Frontend Software Developer
+          </h4>
+          <p class="modal__para">
+            I'm a 23 year old
+            <b class="orange">frontend software developer</b> with a strong
+            passion for creating website from scratch, maximising
+            <b class="orange">UI/UX</b>,
+            <b class="orange">responsiveness</b> and
+            <b class="orange">style</b>.
+            <br>
+            <br>
+            I am currently learning and applying my own solutions to difficult
+            engineering problems guided by extremely
+            <b class="orange">talented</b> and
+            <b class="orange">experienced</b> software engineers every day.
+          </p>
+          <div class="modal__languages">
+            <figure class="modal__language">
+              <img
+                class="modal__language--img"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/HTML5_Badge.svg/240px-HTML5_Badge.svg.png"
+                alt="" />
+              <span class="language__name">HTML</span>
+            </figure>
+            <figure class="modal__language">
+              <img
+                class="modal__language--img"
+                src="https://cdn.iconscout.com/icon/free/png-256/css-131-722685.png"
+                alt="" />
+              <span class="language__name">CSS</span>
+            </figure>
+            <figure class="modal__language">
+              <img
+                class="modal__language--img"
+                src="https://cdn.iconscout.com/icon/free/png-256/javascript-1-225993.png"
+                alt="" />
+              <span class="language__name">JavaScript</span>
+            </figure>
+          </div>
+        </div>
+        <div class="modal__half modal__contact">
+          <i class="fas fa-times modal__exit click" onclick="toggleModal()"></i>
+          <h3 class="modal__title modal__title--contact">Let's chat!</h3>
+          <h4 class="modal__sub-title modal__sub-title--contact">
+            I'm currently open to new opportunities
+          </h4>
+          <form id="contact__form" onsubmit="contact(event)">
+            <div class="form__item">
+              <label class="form__item--label">Name</label>
+              <input class="input" name="user_name" type="text" required></input>
+            </div>
+            <div class="form__item">
+              <label class="form__item--label">Email</label>
+              <input class="input" name="user_email" type="email" required></input>
+            </div>
+            <div class="form__item">
+              <label class="form__item--label">Message</label>
+              <textarea class="input" name="message" type="text" required> </textarea>
+            </div>
+            <button id="contact__submit" class="form__submit">
+              Send it my way!
+            </button>
+          </form>
+          <div class="modal__overlay modal__overlay--loading">
+            <i class="fas fa-spinner"></i>
+          </div>
+          <div class="modal__overlay modal__overlay--success">
+            Thanks for your message!
+            <br>
+            <br>
+            Looking forward to speaking with you soon.
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="projects">
@@ -207,7 +298,6 @@
     <footer>
       <div class="container">
         <div class="row footer__row">
-
           <figure>
             <img src="./assets/logo.png" class="footer__logo--img" alt="logo" />
           </figure>
